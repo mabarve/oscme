@@ -1,0 +1,10 @@
+
+# Repo v2
+
+\#*
+*~
+tmp/*
+env/*
+
+__pycache__/*
+*.pyc

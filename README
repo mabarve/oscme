@@ -1,0 +1,69 @@
+
+# OSCME: OpenSsh Certificate Management Environment
+
+
+OSCME is a standalone application capable of generating signed OpenSSH
+certificates and key-revocation lists.
+
+RFC8555 (ACME) supports X.509 certificates, which are not supported
+by the official OpenSSH. However enterprises and service providers
+have similar needs to manage their SSH users and M2M access. This
+application aims to fill that niche.
+========================================================================
+
+# Creating Pythong virtual environment & installing modules
+$ python3 -m venv env
+$ source env/bin/activate
+
+# Install the necessary Python modules in your virtual environment
+$ pip3 install Flask requests
+
+-----------------------------------------------
+# Setting the environment each time you want to run
+
+$ source source.me
+
+-----------------------------------------------
+
+Directory Structure
+
+this_dir
+	|
+	|
+	|-->env (Python venv directory. Not checked into GIT.
+	|   Create your own by following the instructions in README)
+	|
+	|-->src (ALL the source code for various modes resides here)
+	|   |
+	|   |
+	|   |-->core (core, stateless library that makes OpenSSH calls.
+	|   |	      other modules call into this layer.)
+	|   |
+	|   |
+	|   |-->client (HTTP client side code used for unit testing the
+	|   |	       OSCME server. It provides good examples for other
+	|   |	       client side application development.)
+	|   |
+	|   |
+	|   |-->stateless (Stateless Flask based HTTP server application
+	|   |		  for OSCME. It does NOT store any keys or
+	|   |		  certificates, including that of CA. The client
+	|   |		  must provide all keys and certificates if they
+	|   |		  want to generate OpenSSH certificates. This client
+	|   |		  follows RESTful API conventions.)
+	|   |
+	|   |
+	|   |-->semi-stateful (This Flask based HTTP server follows RESTful API
+	|   |		      conventions. It's only state storage is a single
+	|   |		      CA keypair on a file system at the server end.
+	|   |		      OpenSSH client keys or certificates are NOT stored.)
+	|   |
+	|   |
+	|   |-->stateful (This Flask based HTTP server has it's own database
+	|   |		 backend to store OpenSSH keys and certificates for
+	|   |		 clients & CA. It follows RESTful API conventions and
+	|   |		 support HTTP GET/ POST/ DELETE operations.
+	|
+	|
+	|
+	|-->tmp (temporary files for testing)
