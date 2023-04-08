@@ -5,6 +5,9 @@
 OSCME is a standalone application capable of generating signed OpenSSH
 certificates and key-revocation lists.
 
+This is open-source software. Read the LICENSE file for further details.
+
+
 RFC8555 (ACME) supports X.509 certificates, which are not supported
 by the official OpenSSH. However enterprises and service providers
 have similar needs to manage their SSH users and M2M access. This
