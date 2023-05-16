@@ -12,7 +12,7 @@ RFC8555 (ACME) supports X.509 certificates, which are not supported
 by the official OpenSSH. However enterprises and service providers
 have similar needs to manage their SSH users and M2M access. This
 application aims to fill that niche.
-========================================================================
+=====================================================================================
 
 # Creating Pythong virtual environment & installing modules
 $ python3 -m venv env
@@ -70,3 +70,13 @@ this_dir
 	|
 	|
 	|-->tmp (temporary files for testing)
+=====================================================================================
+Running with Stateless server
+
+# Launch the stateless server (run with -h or --help for more options)
+$ python3 src/stateless/stateless-server.py
+
+# Launch a Python based client to talk to the stateless server (run with -h or --help for more options)
+$ python3 src/client/oscme-client.py 
+=====================================================================================
+
